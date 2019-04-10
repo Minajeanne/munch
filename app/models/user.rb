@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email, :password, :full_name
 
   has_many :reviews
-  has_many :restaurants, through :reviews
+  has_many :restaurants, through: :reviews
 end
