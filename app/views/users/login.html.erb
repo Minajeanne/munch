@@ -1,1 +1,16 @@
-app/views/users/login.html.erb
+<br>
+<h1> Welcome to MUNCH! </h1>
+<br><br>
+
+<h4> Please Log In Below: </h4>
+<style>
+body {
+  font-size: 20px;
+  }
+  </style>
+  <body>
+    <span style='font-size:100px;'>&#9759;</span>
+      <form action="/login" method="POST">
+      <h4>Username:  <input type="text" name="username" style="width: 240px;"><br>
+      &nbsp;Password:  <input type="password" name="password" style="width: 240px;"><br>
+      <h4><input type="submit" value="Log In"</h4><br>
