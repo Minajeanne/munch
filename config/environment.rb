@@ -9,5 +9,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 require 'sysrandom/securerandom'
+require 'slim'
+require 'sinatra/flash'
 require './app/controllers/application_controller'
 require_all 'app'

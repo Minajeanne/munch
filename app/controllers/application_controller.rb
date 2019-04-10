@@ -1,17 +1,17 @@
 require './config/environment'
-require 'sysrandom/securerandom'
 
 class ApplicationController < Sinatra::Base
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    register Sinatra::Flash
     enable :sessions
+    register Sinatra::Flash
     set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
   get "/" do
+    flash[:notice] = "WOAH"
     erb :"/welcome.html"
   end
 
