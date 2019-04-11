@@ -17,9 +17,9 @@ class UsersController < ApplicationController
       else
         @user = User.new(full_name: params[:full_name], username: params[:username], email: params[:email], password: params[:password])
         @user.save
-         binding.pry
+         # binding.pry
         session[:id] = @user.id
-        erb :'/reviews/index.html'
+        erb :'/users/show.html'
       end
     else
       redirect '/'
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        erb :'/reviews/index.html'
+        erb :'/users/show.html'
       else
         flash[:message] = "Error -- Please enter a valid username and/or password."
         redirect "/login"

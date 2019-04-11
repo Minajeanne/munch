@@ -1,23 +1,17 @@
-1) show all personal reviews
-    2) have link to view ALL reviews
-      3) have link to view ALL restaurants
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title><%{@user.name}%>'s Reviews:</title>
+    <title></title>
   </head>
   <body>
     <style>
 
     </style>
-<% flash.keys.each do |type| %> 
-<div data-alert class="flash <%= type %> alert-box radius"> 
-   <%= flash[type] %> 
-<a href="#" class="close">&times;</a> 
-</div>     
-<% end %>
+<h1><%=@user.full_name %>'s Reviews:</h1>
+<ul>
+  <!-- add user's reviews -->
+</ul>
 
     <form action="/reviews/new" method="GET">
       <input type="submit" class="button" value="Create New Review">

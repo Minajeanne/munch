@@ -11,12 +11,12 @@ class ReviewsController < ApplicationController
   end
 
   get '/reviews/new' do
-    binding.pry
-    if logged_in?
+     # binding.pry
+    # if logged_in?
       erb :'reviews/new.html'
-    else
-      redirect '/login'
-    end
+    # else
+    #   redirect '/login'
+    # end
   end
 
   post '/reviews' do
