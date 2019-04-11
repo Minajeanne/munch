@@ -12,16 +12,16 @@ class UsersController < ApplicationController
     if !logged_in?
       if params[:username].empty? || params[:password].empty? || params[:email].empty?
         flash[:message] = "Error -- Please make sure all fields are complete."
-        redirect '/signup.html'
+        redirect '/signup'
       else
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
         @user.save
-        binding.pry
+        # binding.pry
         session[:id] = @user.id
         erb :'/reviews/index.html'
       end
     else
-      redirect '/signup.html'
+      redirect '/'
     end
   end
 
@@ -34,17 +34,18 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
+    # binding.pry
     if !logged_in?
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect '/reviews/index.html'
+        erb :'/reviews/index.html'
       else
         flash[:message] = "Error -- Please enter a valid username and/or password."
-        redirect "/login.html"
+        redirect "/login"
       end
     else
-      redirect '/welcome.html'
+      redirect '/welcome'
     end
   end
 
