@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/login.html'
     else
-      redirect '/welcome'
+      redirect '/'
     end
   end
 
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
         redirect "/login"
       end
     else
-      redirect '/welcome'
+      redirect '/'
     end
   end
 

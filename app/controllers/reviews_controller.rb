@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   get '/reviews/new' do
+    @restaurants = Restaurant.all
      # binding.pry
     # if logged_in?
       erb :'reviews/new.html'
@@ -19,13 +20,19 @@ class ReviewsController < ApplicationController
     # end
   end
 
-  post '/reviews' do
-    user = current_user
-    @review = user.reviews.create(title: params[:title], experience: params[:experience], rating: params[:rating])
-    @review.save
-    # binding.pry
-    flash[:message] = "You have succesfully created #{review.title}!"
-    redirect to "/reviews/#{review.id}"
+  post '/reviews/new' do
+    @review = Review.new(title: params[:title], experience: params[:experience], rating: params[:rating])
+      # binding.pry
+    @review.user_id = session[:user_id]
+    @review.restaurant_id = params[:restaurant_id].to_i
+      if @review && @review.user_id == current_user.id
+        @review.save
+
+        flash[:message] = "You have succesfully created #{@review.title}!"
+        redirect to "/reviews/#{@review.id}"
+      else
+        redirect '/reviews/index'
+      end
   end
 
   get '/reviews/:id' do
@@ -51,7 +58,7 @@ class ReviewsController < ApplicationController
     @review.update(title: params[:title], experience: params[:experience], rating: params[:rating])
     @review.save
 
-    redirect to "/reviews/#{review.id}"
+    redirect to "/reviews/#{@review.id}"
   end
 
   delete '/reviews/:id' do
@@ -65,7 +72,7 @@ class ReviewsController < ApplicationController
       redirect '/index'
     end
 
-    flash[:message] = "You have succesfully deleted #{review.title}!"
+    flash[:message] = "You have succesfully deleted #{@review.title}!"
     @review.destroy && @restaurant.destroy_all
     redirect to "/reviews/index"
   end

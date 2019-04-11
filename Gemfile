@@ -12,7 +12,6 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash'
-gem 'slim'
 gem 'sysrandom'
 
 group :test do
