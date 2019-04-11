@@ -4,21 +4,22 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/signup.html'
     else
-      redirect '/welcome'
+      user = current_user
+      redirect '/user/#{user.id}'
     end
   end
 
   post '/signup' do
     if !logged_in?
-      if params[:username].empty? || params[:password].empty? || params[:email].empty?
+      if params[:full_name].empty? || params[:username].empty? || params[:password].empty? || params[:email].empty?
         flash[:message] = "Error -- Please make sure all fields are complete."
         redirect '/signup'
       else
-        @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+        @user = User.new(full_name: params[:full_name], username: params[:username], email: params[:email], password: params[:password])
         @user.save
-        # binding.pry
+         # binding.pry
         session[:id] = @user.id
-        erb :'/reviews/index.html'
+        erb :'/users/show.html'
       end
     else
       redirect '/'
@@ -39,13 +40,22 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        erb :'/reviews/index.html'
+        erb :'/users/show.html'
       else
         flash[:message] = "Error -- Please enter a valid username and/or password."
         redirect "/login"
       end
     else
       redirect '/welcome'
+    end
+  end
+
+  get '/users/:id' do
+    @user = current_user
+    if @user && @user.id == params[:id]
+      erb :'/users/show'
+    else
+      redirect '/login'
     end
   end
 

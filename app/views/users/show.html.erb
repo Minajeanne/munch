@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
+
+    </style>
+<h1><%=@user.full_name %>'s Reviews:</h1>
+<ul>
+  <!-- add user's reviews -->
+</ul>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create New Review">
+    </form>
+
+    <form action="/reviews/index">
+      <input type="submit" class="button" value="Read All User Reviews">
+    </form>
+
+    <form action="/restaurants/index">
+      <input type="submit" class="button" value="View Restaurants">
+    </form>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>
