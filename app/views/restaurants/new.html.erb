@@ -1,3 +1,24 @@
-app/views/restaurants/new.html.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
 
-create a restaurant
+    </style>
+    <form action="/restaurants/new" method="POST">
+      <!-- was '/reviews/new' -->
+<!-- <form class=action="/restaurants/new" method="post"> -->
+
+    <label> Restaurant Name:</label>
+    <input type="text" name="name"require><br><br>
+    <label> Cuisine:</label>
+    <input type="text" name="cuisine"require><br><br>
+    <label> Location:</label>
+    <input type="text" name="location"require><br><br>
+    <input type= "submit" value="Create Restaurant">
+    </form>
+  </body>
+</html>

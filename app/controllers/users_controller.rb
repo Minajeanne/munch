@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       else
         @user = User.new(full_name: params[:full_name], username: params[:username], email: params[:email], password: params[:password])
         @user.save
-         # binding.pry
         session[:id] = @user.id
         erb :'/users/show.html'
       end
@@ -35,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    # binding.pry
     if !logged_in?
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])

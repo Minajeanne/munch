@@ -69,11 +69,11 @@ class ReviewsController < ApplicationController
 
     if current_user.id != @review.user_id
       flash[:error] = "Oops! You can only edit a review that you created."
-      redirect '/index'
+      redirect '/review/index'
     end
 
     flash[:message] = "You have succesfully deleted #{@review.title}!"
-    @review.destroy && @restaurant.destroy_all
-    redirect to "/reviews/index"
+    @review.destroy
+    redirect to '/reviews/index'
   end
 end
