@@ -14,7 +14,7 @@
   <%@reviews.each do |review| %>
   <ul>
     <!-- list restaurant name as href & link to /restaurants/show  restaurant_id??-->
-    <a href="/restaurants/show/<%=review.restaurant_id %>"></a><br>
+    <strong><a href="<%=restaurant.id%>"><%=restaurant.name%></a></strong><br>
     Title: <%=review.title%><br>
     Experience: <%= review.experience %><br>
     Rating: <%= review.rating %>/<br>

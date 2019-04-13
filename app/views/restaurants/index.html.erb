@@ -12,7 +12,7 @@
   <%@restaurants.each do |restaurant| %>
   <ul>
     <!-- change restaurant name to hyperlink to view that restaurant's reviews -->
-    <strong><%=restaurant.name%></strong><br>
+    <strong><a href="<%=restaurant.id%>"><%=restaurant.name%></a></strong><br>
     Cuisine: <%= restaurant.cuisine%><br>
     Location: <%= restaurant.location%><br>
     Overall Rating: <%= @overall_rating%><br>
