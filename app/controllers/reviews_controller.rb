@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(title: params[:title], experience: params[:experience], rating: params[:rating])
       # binding.pry
     @review.user_id = session[:user_id]
-    @review.restaurant_id = params[:restaurant_id].to_i
+    @review.restaurant_id = params[:restaurant_id]
       if @review && @review.user_id == current_user.id
         @review.save
 

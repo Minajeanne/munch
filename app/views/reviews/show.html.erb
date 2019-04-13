@@ -1,3 +1,37 @@
-app/views/reviews/show.html.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
 
-show created/edited review
+    </style>
+<h1><%=@user.full_name %>'s Latest Review:</h1>
+
+
+  <ul>
+    <%=@review.title%>
+    <%=@review.experience%>
+    <%=@review.rating%>
+  </ul><br><br>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create Another Review">
+    </form>
+
+    <form action="/reviews/index">
+      <input type="submit" class="button" value="Read All User Reviews">
+    </form>
+
+    <form action="/restaurants/index">
+      <input type="submit" class="button" value="View Restaurants">
+    </form>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>

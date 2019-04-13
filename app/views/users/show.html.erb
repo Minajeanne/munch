@@ -9,9 +9,15 @@
 
     </style>
 <h1><%=@user.full_name %>'s Reviews:</h1>
-<ul>
-  <!-- add user's reviews -->
-</ul>
+
+
+  <%@reviews.each do |review| %>
+  <ul>
+    <%=review.title%>
+    <%=review.experience%>
+    <%=review.rating%>
+  </ul><br><br>
+    <% end%>
 
     <form action="/reviews/new" method="GET">
       <input type="submit" class="button" value="Create New Review">
