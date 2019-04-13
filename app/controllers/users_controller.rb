@@ -36,16 +36,12 @@ class UsersController < ApplicationController
 
   post '/login' do
     if !logged_in?
-       # binding.pry
        @user = User.find_by(username: params[:username])
          if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
         @reviews = @user.reviews
- # binding.pry
-    # @user = User.find_by(username: params[:username])
-    #   if @user && @user.authenticate(params[:password])
-    #     session[:user_id] = @user.id
-        # binding.pry
+  # binding.pry
+
         erb :'/users/show.html'
       else
         flash[:message] = "Error -- Please enter a valid username and/or password."
@@ -58,8 +54,10 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = current_user
-    if @user && @user.id == params[:id]
-      erb :'/users/show'
+    if @user && @user.id #== params[:id].to_i
+    # if @user && @user.username == params[:username]
+      @reviews = @user.reviews
+      erb :'/users/show.html'
     else
       redirect '/login'
     end

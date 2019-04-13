@@ -2,8 +2,11 @@ class ReviewsController < ApplicationController
 
   get '/reviews/index' do
     if logged_in?
-
+      @restaurants = Restaurant.all
       @reviews = Review.all
+      @reviews = @reviews.sort_by(&:restaurant_id)
+      # @reviews.restaurant_id == @restaurants.id
+      # binding.pry
       erb :'/reviews/index.html'
     else
       redirect '/login'

@@ -13,13 +13,15 @@
 
   <%@reviews.each do |review| %>
   <ul>
+    <!-- list restaurant name as href & link to /restaurants/show  restaurant_id??-->
+    <a href="/restaurants/show/<%=review.restaurant_id %>"></a><br>
     Title: <%=review.title%><br>
-    Experience: <%= review.experience%><br>
-    Rating: <%= review.rating%>/<br>
+    Experience: <%= review.experience %><br>
+    Rating: <%= review.rating %>/<br>
   </ul><br><br>
     <% end%>
 
-    <form action="/users/login" method="POST">
+    <form action="/users/:id">
       <input type="submit" class="button" value="My Reviews">
     </form>
 
