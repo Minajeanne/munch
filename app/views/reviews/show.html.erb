@@ -12,9 +12,9 @@
 
 
   <ul>
-    <%=@review.title%>
-    <%=@review.experience%>
-    <%=@review.rating%>
+    Title: <%=@review.title%><br>
+    Experience: <%=@review.experience%><br>
+    Rating: <%=@review.rating%>/5<br>
   </ul><br><br>
 
     <form action="/reviews/new" method="GET">
@@ -26,12 +26,12 @@
     </form><br>
 
     <form action="/reviews/<%=@review.id%>/edit" method="GET">
-      <input id="hidden" type="hidden" name="_method" value="edit">
+      <input id="hidden" type="hidden" name="_method" value="EDIT">
       <input type="submit" class="button" name="edit" value="Edit Review">
     </form><br>
 
-    <form action="/reviews/<%=@review.id%>/delete" method="DELETE">
-      <input id="hidden" type="hidden" name="_method" value="delete">
+    <form action="/reviews/<%=@review.id%>/delete" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" class="button" name="delete" value="Delete Review">
     </form><br>
 
