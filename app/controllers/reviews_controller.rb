@@ -23,12 +23,11 @@ class ReviewsController < ApplicationController
 
   post '/reviews/new' do
     @review = Review.new(title: params[:title], experience: params[:experience], rating: params[:rating])
-      # binding.pry
     @review.user_id = session[:user_id]
     @review.restaurant_id = params[:restaurant_id]
       if @review && @review.user_id == current_user.id
         @review.save
-
+ binding.pry
         flash[:message] = "You have succesfully created #{@review.title}!"
         redirect to "/reviews/#{@review.id}"
       else
@@ -64,17 +63,23 @@ class ReviewsController < ApplicationController
 
   delete '/reviews/:id/delete' do
     redirect to '/login' unless logged_in?
-    @user = current_user
-    @review = Review.find_by(params[:id])
-    @restaurant = Restaurant.where(review: @review)
+      @user = current_user
+      @review = Review.find(params[:id])
+      @restaurant = Restaurant.where(review: @review)
 
-    if current_user.id != @review.user_id
-      flash[:error] = "Oops! You can only edit a review that you created."
-      redirect "/reviews/#{@review.id}"
-    else
+#####FIX THIS#######
+    # if @user.user_id != @review.user_id
+    #   binding.pry
+    #   flash[:error] = "Oops! You can only edit a review that you created."
+    #   redirect "/reviews/#{@review.id}"
+    # # if @review && @review.user_id == @user.id
+    # #     flash[:message] = "You have succesfully deleted #{@review.title}!"
+    # #     @review.destroy
+    # #     redirect to "/reviews/#{@review.id}"
+    #  else
       flash[:message] = "You have succesfully deleted #{@review.title}!"
       @review.destroy
       redirect to "/reviews/#{@review.id}"
     end
   end
-end
+# end
