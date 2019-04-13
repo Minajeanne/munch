@@ -1,3 +1,24 @@
-app/views/reviews/edit.html.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/reviews/<%=@review.id%>" method="POST">
+      <input type="hidden" name="_method" value="PATCH">
+      <label> Title:</label>
+      <input type="text" name="title"require><br> <br>
+      <label> Experience:</label>
+      <textarea name="experience" require rows="10" cols="50">
+      </textarea><br><br>
+      <label> Rating:</label>
+      <input type="number" name="rating"require><br><br> <br>
+      <input type="submit" value="Save Changes">
+    </form>
 
-edit a review
+    <form action="/reviews/index">
+		<input type="submit"class="button" value="Return to Index">
+	  </form>
+  </body>
+</html>

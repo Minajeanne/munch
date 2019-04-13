@@ -4,6 +4,11 @@ class RestaurantsController < ApplicationController
     if logged_in?
 
       @restaurants = Restaurant.all
+        @restaurants.each do |restaurant|
+          restaurant.overall_rating
+          @overall_rating = restaurant.overall_rating
+          # binding.pry
+        end
       erb :'/restaurants/index.html'
     else
       redirect '/login'

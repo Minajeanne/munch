@@ -25,8 +25,14 @@
       <input type="submit" class="button" value="Read All User Reviews">
     </form><br>
 
-    <form action="/restaurants/index">
-      <input type="submit" class="button" value="View Restaurants">
+    <form action="/reviews/<%=@review.id%>/edit" method="GET">
+      <input id="hidden" type="hidden" name="_method" value="edit">
+      <input type="submit" class="button" name="edit" value="Edit Review">
+    </form><br>
+
+    <form action="/reviews/<%=@review.id%>/delete" method="DELETE">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" class="button" name="delete" value="Delete Review">
     </form><br>
 
     <form action="/logout" method="GET">

@@ -62,7 +62,7 @@ class ReviewsController < ApplicationController
     redirect to "/reviews/#{@review.id}"
   end
 
-  delete '/reviews/:id' do
+  delete '/reviews/:id/delete' do
     redirect to '/login' unless logged_in?
     @user = current_user
     @review = Review.find(params[:id])
