@@ -13,9 +13,9 @@
 
   <%@reviews.each do |review| %>
   <ul>
-    <%=review.title%>
-    <%=review.experience%>
-    <%=review.rating%>
+    Title: <%=review.title %><br>
+    Experience: <%=review.experience %><br>
+    Rating: <%=review.rating%>/5<br>
   </ul><br><br>
     <% end%>
 

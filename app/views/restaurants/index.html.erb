@@ -1,3 +1,35 @@
-app/views/restaurants/index.html.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
 
-list of restaurants hyperlinked to /show
+    </style>
+<h1><strong>Restaurants:</strong></h1><br><br><br>
+  <%@restaurants.each do |restaurant| %>
+  <ul>
+    <!-- change restaurant name to hyperlink to view that restaurant's reviews -->
+    <strong><%=restaurant.name%></strong><br>
+    Cuisine: <%= restaurant.cuisine%><br>
+    Location: <%= restaurant.location%><br>
+    Overall Rating: <%= restaurant.overall_rating%>br
+  </ul><br><br>
+    <% end%>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create New Review">
+    </form>
+
+    <form action="/users/show">
+      <input type="submit" class="button" value="My Reviews">
+    </form>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>

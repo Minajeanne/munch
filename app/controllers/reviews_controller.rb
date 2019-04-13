@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   get '/reviews/index' do
     if logged_in?
 
-      @review = Review.all
+      @reviews = Review.all
       erb :'/reviews/index.html'
     else
       redirect '/login'
@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
 
   get '/reviews/new' do
     @restaurants = Restaurant.all
+    @restaurants.sort_by(&:name)
      # binding.pry
     # if logged_in?
       erb :'reviews/new.html'

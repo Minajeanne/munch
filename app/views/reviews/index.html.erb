@@ -1,3 +1,39 @@
-app/views/reviews/index.html.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style>
 
-1) show all reviews
+    </style>
+<h1><strong>User Reviews:</strong></h1><br><br>
+
+
+  <%@reviews.each do |review| %>
+  <ul>
+    Title: <%=review.title%><br>
+    Experience: <%= review.experience%><br>
+    Rating: <%= review.rating%>/<br>
+  </ul><br><br>
+    <% end%>
+
+    <form action="/users/show">
+      <input type="submit" class="button" value="My Reviews">
+    </form>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create New Review">
+    </form>
+
+    <form action="/restaurants/index">
+      <input type="submit" class="button" value="View Restaurants">
+    </form>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>
