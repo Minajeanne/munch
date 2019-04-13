@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     @review.restaurant_id = params[:restaurant_id]
       if @review && @review.user_id == current_user.id
         @review.save
- binding.pry
+ # binding.pry
         flash[:message] = "You have succesfully created #{@review.title}!"
         redirect to "/reviews/#{@review.id}"
       else
@@ -66,20 +66,20 @@ class ReviewsController < ApplicationController
       @user = current_user
       @review = Review.find(params[:id])
       @restaurant = Restaurant.where(review: @review)
-
+binding.pry
 #####FIX THIS#######
-    # if @user.user_id != @review.user_id
-    #   binding.pry
-    #   flash[:error] = "Oops! You can only edit a review that you created."
-    #   redirect "/reviews/#{@review.id}"
-    # # if @review && @review.user_id == @user.id
-    # #     flash[:message] = "You have succesfully deleted #{@review.title}!"
-    # #     @review.destroy
-    # #     redirect to "/reviews/#{@review.id}"
-    #  else
+    if @user.user_id != @review.user_id
+
+      flash[:error] = "Oops! You can only edit a review that you created."
+      redirect "/reviews/#{@review.id}"
+    # if @review && @review.user_id == @user.id
+    #     flash[:message] = "You have succesfully deleted #{@review.title}!"
+    #     @review.destroy
+    #     redirect to "/reviews/#{@review.id}"
+     else
       flash[:message] = "You have succesfully deleted #{@review.title}!"
       @review.destroy
-      redirect to "/reviews/#{@review.id}"
+      redirect to '/reviews/index'
     end
   end
-# end
+end
