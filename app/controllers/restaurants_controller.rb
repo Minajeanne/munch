@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
         @restaurants.each do |restaurant|
           restaurant.overall_rating
           @overall_rating = restaurant.overall_rating
-           binding.pry
+           # binding.pry
         end
       erb :'/restaurants/index.html'
     else

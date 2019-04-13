@@ -1,10 +1,11 @@
 <br><br><br>
 
 <ul>
-  <!-- change restaurant name to hyperlink to view that restaurant's reviews -->
-  <%=@restaurant.id%>
-  <%=@restaurant.name %><br>
+  <strong><%=@restaurant.name %></strong><br>
   Cuisine: <%=@restaurant.cuisine%><br>
   Location: <%=@restaurant.location%><br>
   Overall Rating: <%= @overall_rating%><br>
-</ul><br><br>
+
+  <%=@restaurant.reviews.sort_by(&:rating)%>
+</ul>
+<br><br>
