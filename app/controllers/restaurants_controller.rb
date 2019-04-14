@@ -2,7 +2,6 @@ class RestaurantsController < ApplicationController
 
   get '/restaurants/index' do
     if logged_in?
-
       @restaurants = Restaurant.all.sort_by(&:name)
         @restaurants.each do |restaurant|
           restaurant.overall_rating
