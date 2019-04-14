@@ -1,4 +1,30 @@
-app/views/restaurants/show.html.erb
+<br><br><br>
+<h1><%=@restaurant.name %></h1>
 
-1) show individual restaurant info
-  2) overall_rating - process here
+  <h4><%=@restaurant.cuisine%></h4>
+  <h4><%=@restaurant.location%></h4>
+  <h4><%= @overall_rating%>/5</h4>
+<hr>
+  <h2>User Reviews</h2><br>
+  <%@restaurant.reviews.sort_by(&:rating).each do |review|%>
+  <strong><%=review.title%></strong><br>
+  <%= review.experience%><br>
+  <%= review.rating%>/5<br><br><br>
+    <%end%>
+
+<br><br>
+<form action="/users/:id">
+  <input type="submit" class="button" value="My Reviews">
+</form>
+
+<form action="/reviews/index">
+  <input type="submit" class="button" value="Read All User Reviews">
+</form>
+
+<form action="/restaurants/index">
+  <input type="submit" class="button" value="View Restaurants">
+</form>
+
+<form action="/logout">
+  <input type="submit" class="button" value="Log Out">
+</form>

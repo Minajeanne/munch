@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
+<br><br><br>
+<h1><%=@user.full_name %>'s Reviews</h1>
+<br><br>
+  <%@reviews.each do |review| %>
 
-    </style>
-<h1><%=@user.full_name %>'s Reviews:</h1>
-<ul>
-  <!-- add user's reviews -->
-</ul>
+    <strong><a href="/restaurants/<%=review.restaurant_id %>"style="color:#8c1d2d"><%=review.title%></a></strong><br>
+    <%=review.experience %><br>
+    <strong><%=review.rating%>/5</strong><br><br><br>
+    <% end%>
 
     <form action="/reviews/new" method="GET">
       <input type="submit" class="button" value="Create New Review">

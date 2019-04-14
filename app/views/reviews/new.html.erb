@@ -1,37 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
-      <!-- id of input field -->{
-      border: 2px black solid;
-    }
-    </style>
-
-<h1>Create a New Review:</h1>
-
+<br><br><br>
+<h1>Create a New Review</h1>
+<br>
 <form action="/reviews/new" method="POST">
-  <label>Choose an existing restaurant:</label><br><br>
+  <label>Choose an existing restaurant:</label><br>
 
   <%@restaurants.each do |restaurant|%>
-  <input type="radio" name="restaurant_id" value="<%=restaurant.id%>"> <%= restaurant.name%><br><br>
+  <input type="radio" name="restaurant_id" value="<%=restaurant.id%>"><%= restaurant.name%>
   <% end%>
+<br><br>
+  <label>Your restaurant not on the List? <a href="/restaurants/new" style="color:#6f6d5a">Create a new restaurant!</a></label><br><br><br>
 
-  <label>Your restaurant not on the List? Create a new restaurant:</label><br><br>
-  <label>Restaurant Name</label>
-  <input type="text" name="name" value=""><br><br>
-<!-- check params for key :name and ensure unique -->
+  <label>Title</label>
+  <input type="text" name="title"require><br><br>
+  <label>Experience</label>
+  <textarea name="experience" require>
+  </textarea><br><br>
+  <label>Rating</label>
+  <input type="number" name="rating" step="0.5" min="1" max="5"require><br><br><br>
+  <input type= "submit" value="Create Review"><br><br>
 
-  <label> Title:</label>
-  <input type="text" name="title"require><br> <br>
-  <label> Experience:</label>
-  <input type="text" name="experience"require><br> <br>
-  <label> Rating:</label>
-  <input type="number" name="rating"require><br><br> <br>
-  <input type= "submit" value="Create Review">
+  <form action="/logout">
+    <input type="submit" class="button" value="Log Out">
+  </form>
 </form>
 </body>
 </html>

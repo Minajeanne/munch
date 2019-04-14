@@ -16,8 +16,8 @@ class UsersController < ApplicationController
         redirect '/signup'
       else
         @user = User.new(full_name: params[:full_name], username: params[:username], email: params[:email], password: params[:password])
+        # binding.pry
         @user.save
-         # binding.pry
         session[:id] = @user.id
         erb :'/users/show.html'
       end
@@ -35,11 +35,13 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    # binding.pry
     if !logged_in?
-    @user = User.find_by(username: params[:username])
-      if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
+       @user = User.find_by(username: params[:username])
+         if @user && @user.authenticate(params[:password])
+           session[:user_id] = @user.id
+        @reviews = @user.reviews
+  # binding.pry
+
         erb :'/users/show.html'
       else
         flash[:message] = "Error -- Please enter a valid username and/or password."
@@ -52,8 +54,10 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = current_user
-    if @user && @user.id == params[:id]
-      erb :'/users/show'
+    if @user && @user.id #== params[:id].to_i
+    # if @user && @user.username == params[:username]
+      @reviews = @user.reviews
+      erb :'/users/show.html'
     else
       redirect '/login'
     end

@@ -1,3 +1,33 @@
-app/views/reviews/show.html.erb
+  <br><br><br>
+  <h1><%=@user.full_name %>'s Latest Review</h1>
+  <br>
 
-show created/edited review
+    <strong><%=@review.title%><br></strong>
+    <%=@review.experience%><br>
+    <strong><%=@review.rating%>/5</strong><br>
+    <br><br>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create Another Review">
+    </form><br>
+
+    <form action="/reviews/index">
+      <input type="submit" class="button" value="Read All User Reviews">
+    </form><br>
+
+    <form action="/reviews/<%=@review.id%>/edit" method="GET">
+      <input id="hidden" type="hidden" name="_method" value="EDIT">
+      <input type="submit" class="button" name="edit" value="Edit Review">
+    </form><br>
+
+    <form action="/reviews/<%=@review.id%>/delete" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" name="delete" value="Delete Review">
+    </form><br>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>

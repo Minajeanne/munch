@@ -1,3 +1,32 @@
-app/views/reviews/index.html.erb
+<br><br><br>
+<h1>User Reviews</h1><br><br>
 
-1) show all reviews
+
+  <%@reviews.each do |review| %>
+  <ul>
+    <!-- list restaurant name as href & link to /restaurants/show  restaurant_id??-->
+    <strong><a href="/restaurants/<%=review.restaurant_id %>"style="color:#8c1d2d"><%=review.title%></a></strong><br>
+
+    <%= review.experience %><br>
+    <strong>Rating</strong> <%= review.rating %>/5<br>
+    </ul><br><br>
+    <% end%>
+
+    <form action="/users/:id">
+      <input type="submit" class="button" value="My Reviews">
+    </form>
+
+    <form action="/reviews/new" method="GET">
+      <input type="submit" class="button" value="Create New Review">
+    </form>
+
+    <form action="/restaurants/index">
+      <input type="submit" class="button" value="View Restaurants">
+    </form>
+
+    <form action="/logout">
+      <input type="submit" class="button" value="Log Out">
+    </form>
+
+  </body>
+</html>
