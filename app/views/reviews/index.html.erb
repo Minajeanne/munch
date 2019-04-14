@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
-
-    </style>
+<br><br><br>
 <h1><strong>User Reviews</strong></h1><br><br>
 
 
   <%@reviews.each do |review| %>
   <ul>
     <!-- list restaurant name as href & link to /restaurants/show  restaurant_id??-->
-    <strong><a href="/restaurants/<%=review.restaurant_id%>"><%=review.title%></a></strong><br>
+    <strong><a href="/restaurants/<%=review.restaurant_id %>"style="color:#8c1d2d"><%=review.title%></a></strong><br>
 
-    <strong>Experience</strong> <%= review.experience %><br>
+    <%= review.experience %><br>
     <strong>Rating</strong> <%= review.rating %>/5<br>
-  </ul><br><br>
+    </ul><br>
     <% end%>
 
     <form action="/users/:id">

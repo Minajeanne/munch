@@ -8,13 +8,13 @@
     <style>
 
     </style>
-<h1><%=@user.full_name %>'s Latest Review:</h1>
+<h1><%=@user.full_name %>'s Latest Review</h1>
 
 
   <ul>
-    Title: <%=@review.title%><br>
-    Experience: <%=@review.experience%><br>
-    Rating: <%=@review.rating%>/5<br>
+    Title <%=@review.title%><br>
+    <%=@review.experience%><br>
+    Rating <%=@review.rating%>/5<br>
   </ul><br><br>
 
     <form action="/reviews/new" method="GET">

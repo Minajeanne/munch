@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
+<br><br><br>
+<h1><strong>Restaurants</strong></h1><br><br>
 
-    </style>
-<h1><strong>Restaurants:</strong></h1><br><br><br>
   <%@restaurants.each do |restaurant| %>
   <ul>
     <!-- change restaurant name to hyperlink to view that restaurant's reviews -->
-    <strong><a href="<%=restaurant.id%>"><%=restaurant.name%></a></strong><br>
-    Cuisine: <%= restaurant.cuisine%><br>
-    Location: <%= restaurant.location%><br>
-    Overall Rating: <%= @overall_rating%><br>
+    <strong><a href="<%=restaurant.id%>"style="color:#8c1d2d"><%=restaurant.name%></a></strong><br><br>
+    <%= restaurant.cuisine%><br>
+    <%= restaurant.location%><br>
+    Overall Rating <strong><%= @overall_rating%>/5</strong> <br>
   </ul><br><br>
     <% end%>
 
@@ -34,6 +26,3 @@
     <form action="/logout">
       <input type="submit" class="button" value="Log Out">
     </form>
-
-  </body>
-</html>
