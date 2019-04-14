@@ -5,7 +5,6 @@
   <h4><%=@restaurant.location%></h4>
   <h4><%= @overall_rating%>/5</h4>
 <hr>
-
   <h2>User Reviews</h2><br>
   <%@restaurant.reviews.sort_by(&:rating).each do |review|%>
   <strong><%=review.title%></strong><br>
