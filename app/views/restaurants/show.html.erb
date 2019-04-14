@@ -9,3 +9,18 @@
   <%=@restaurant.reviews.sort_by(&:rating)%>
 </ul>
 <br><br>
+<form action="/users/:id">
+  <input type="submit" class="button" value="My Reviews">
+</form>
+
+<form action="/reviews/index">
+  <input type="submit" class="button" value="Read All User Reviews">
+</form>
+
+<form action="/restaurants/index">
+  <input type="submit" class="button" value="View Restaurants">
+</form>
+
+<form action="/logout">
+  <input type="submit" class="button" value="Log Out">
+</form>
