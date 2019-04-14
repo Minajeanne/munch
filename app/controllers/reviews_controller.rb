@@ -67,22 +67,23 @@ class ReviewsController < ApplicationController
   delete '/reviews/:id/delete' do
     redirect to '/login' unless logged_in?
       @user = current_user
+      # binding.pry
       @review = Review.find(params[:id])
-      @restaurant = Restaurant.where(review: @review)
-binding.pry
+      # @restaurant = Restaurant.where(review: @review)
+   # binding.pry
 #####FIX THIS#######
-    if @user.user_id != @review.user_id
-
-      flash[:error] = "Oops! You can only edit a review that you created."
-      redirect "/reviews/#{@review.id}"
-    # if @review && @review.user_id == @user.id
-    #     flash[:message] = "You have succesfully deleted #{@review.title}!"
-    #     @review.destroy
-    #     redirect to "/reviews/#{@review.id}"
-     else
-      flash[:message] = "You have succesfully deleted #{@review.title}!"
-      @review.destroy
-      redirect to '/reviews/index'
+    # if @user.user_id != @review.user_id
+    #   flash[:error] = "Oops! You can only delete a review that you created."
+    #   redirect "/reviews/#{@review.id}"
+    # if @review.id && @review.user_id == @user.id
+     if @review.user_id == @user.id
+         @review.destroy
+         flash[:message] = "You have succesfully deleted your review!"
+         redirect to '/reviews/index'
+         # redirect to "/reviews/#{@review.id}"
+      else
+      flash[:message] = "Oops! You can only delete a review that you created."
+      redirect to "/reviews/#{@review.id}"
     end
   end
 end
