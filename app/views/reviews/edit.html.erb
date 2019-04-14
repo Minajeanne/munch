@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<br><br><br>
+<h1>Edit Your Review</h1>
     <form action="/reviews/<%=@review.id%>" method="POST">
       <input type="hidden" name="_method" value="PATCH">
-      <label> Title:</label>
-      <input type="text" name="title"require><br> <br>
-      <label> Experience:</label>
-      <textarea name="experience" require rows="10" cols="50">
+      <label>Title</label>
+      <input type="text" name="title"require><br><br>
+      <label>Experience</label>
+      <textarea name="experience" require>
       </textarea><br><br>
-      <label> Rating:</label>
-      <input type="number" name="rating"require><br><br> <br>
+      <label>Rating</label>
+      <input type="number" name="rating" step="0.5" min="1" max="5"require><br><br><br>
       <input type="submit" value="Save Changes">
     </form>
 

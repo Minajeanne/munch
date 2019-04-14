@@ -1,11 +1,11 @@
 <br><br><br>
-<h1><%=@user.full_name %>'s Reviews</h1><br><br>
-
+<h1><%=@user.full_name %>'s Reviews</h1>
+<br><br>
   <%@reviews.each do |review| %>
 
     <strong><a href="/restaurants/<%=review.restaurant_id %>"style="color:#8c1d2d"><%=review.title%></a></strong><br>
     <%=review.experience %><br>
-    <strong>Rating</strong> <%=review.rating%>/5<br><br><br>
+    <strong><%=review.rating%>/5</strong><br><br><br>
     <% end%>
 
     <form action="/reviews/new" method="GET">

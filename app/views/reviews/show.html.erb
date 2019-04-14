@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
+  <br><br><br>
+  <h1><%=@user.full_name %>'s Latest Review</h1>
+  <br>
 
-    </style>
-<h1><%=@user.full_name %>'s Latest Review</h1>
-
-
-  <ul>
-    Title <%=@review.title%><br>
+    <strong><%=@review.title%><br></strong>
     <%=@review.experience%><br>
-    Rating <%=@review.rating%>/5<br>
-  </ul><br><br>
+    <strong><%=@review.rating%>/5</strong><br>
+    <br><br>
 
     <form action="/reviews/new" method="GET">
       <input type="submit" class="button" value="Create Another Review">
