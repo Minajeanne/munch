@@ -242,8 +242,21 @@ input[type="button"].button-primary:focus {
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-input[type="email"],
 input[type="number"],
+textarea,
+select {
+  font-size: 1.4rem;
+  opacity: .5;
+  height: 38px;
+  width: 80px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  opacity: 0.6;
+  border: 3px solid white;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+input[type="email"],
 input[type="search"],
 input[type="text"],
 input[type="tel"],
