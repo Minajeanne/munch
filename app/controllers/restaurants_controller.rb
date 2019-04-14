@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
         @restaurants.each do |restaurant|
           restaurant.overall_rating
           @overall_rating = restaurant.overall_rating
-           # binding.pry
         end
       erb :'/restaurants/index.html'
     else
@@ -17,16 +16,6 @@ class RestaurantsController < ApplicationController
   get '/restaurants/new' do
     if logged_in?
       erb :'/restaurants/new.html'
-    #   @restaurant = Restaurant.new(name: params[:name], cuisine: params[:cuisine], location: params[:location])
-    #   @restaurant.user_id = session[:id]
-    #     if @restaurant && @restaurant.user_id == current_user.id
-    #       @restaurant.save
-    #       redirect '/reviews/new'
-    #     else
-    #       redirect '/reviews/index'
-    #     end
-    # else
-    #   redirect '/login'
    end
   end
 
@@ -55,10 +44,7 @@ class RestaurantsController < ApplicationController
   get '/restaurants/:id/edit' do
     redirect to '/login' unless logged_in?
     @restaurant = Restaurant.find(params[:id])
-      # if current_user.id != @review.user_id
-      #   flash[:error] = "Oops! You can only edit a review that you created."
-      #   redirect '/index'
-      # end
+  
     erb :'/restaurants/edit.html'
   end
 
