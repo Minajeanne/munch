@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <style>
-
-    </style>
-<h1><%=@user.full_name %>'s Reviews:</h1>
+<br><br><br><br><br>
+<h1><%=@user.full_name %>'s Reviews</h1>
 
 
   <%@reviews.each do |review| %>
   <ul>
-    Title: <%=review.title %><br>
-    Experience: <%=review.experience %><br>
-    Rating: <%=review.rating%>/5<br>
+    <strong><%=review.title %></strong><br>
+    <%=review.experience %><br>
+    <strong>Rating</strong> <%=review.rating%>/5<br>
   </ul><br><br>
     <% end%>
 
