@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-weight: 300; }
 h1 { font-size: 5.0rem; line-height: 1.2;  letter-spacing: .2rem; font-family: "Avantgarde"; font-color: #070403; opacity: 1.0;}
-h2 { font-size: 2.0rem; line-height: 2.4rem;  letter-spacing: 0; color: #070403; font-family: "Avantgarde", Arial, Helvetica, sans-serif; }
+h2 { font-size: 4.0rem; line-height: 1.2rem;  letter-spacing: 0; color: #070403; font-family: "Avantgarde", Arial, Helvetica, sans-serif; }
 h3 { font-size: 2.0rem; line-height: 1.4rem;  letter-spacing: 0.3; color: #070403; font-family: "Avantgarde", Arial, Helvetica, sans-serif; }
 h4 { font-size: 1.5rem; line-height: .5; letter-spacing: 0; color: #070403; font-family: Avantgarde;}
 h5 { font-size: 1.2rem; line-height: .7;  letter-spacing: 0; color: #800000; }
@@ -161,8 +161,8 @@ h6 { font-size: 1.5rem; line-height: 1;  letter-spacing: 0; color: #F3E5AB; }
 /* Larger than phablet */
 @media (min-width: 550px) {
   h1 { font-size: 5.0rem;  line-height: .8; letter-spacing: .2rem; font-family: "Avantgarde"; font-color: white; opacity: 0.8;}
-  h2 { font-size: 1.0rem; line-height: 2.4rem;  letter-spacing: 0; color: white; font-family: "Avantgarde", Arial, Helvetica, sans-serif; }
-  h3 { font-size: 2.4rem; line-height: 2.4rem;  letter-spacing: .3; color: color: #BFEFFF; font-family: "Avantgarde", Arial, Helvetica, sans-serif; }
+  h2 { font-size: 3.0rem; line-height: 2.4rem;  letter-spacing: 0; color: #070403; font-family: "Avantgarde", Helvetica, sans-serif; }
+  h3 { font-size: 2.4rem; line-height: 2.4rem;  letter-spacing: .3; color: color: #070403; font-family: "Avantgarde", Helvetica, sans-serif; }
   h4 { font-size: 1.5rem; }
   h5 { font-size: 1.2rem; }
   h6 { font-size: 1.5rem; }
@@ -404,7 +404,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid #8c1d2d; }
 
 
 /* Clearing

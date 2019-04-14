@@ -1,18 +1,18 @@
 <br><br><br>
+<h1><%=@restaurant.name %></h1>
 
-<ul>
-  <h1><%=@restaurant.name %></h1>
-  <strong>Cuisine:</strong> <%=@restaurant.cuisine%>
-  <strong>Location:</strong> <%=@restaurant.location%>
-  <strong>Overall Rating:</strong> <%= @overall_rating%><br><br><br>
+  <h4><%=@restaurant.cuisine%></h4>
+  <h4><%=@restaurant.location%></h4>
+  <h4><%= @overall_rating%>/5</h4>
+<hr>
 
-  <h1>User Reviews</h1><br>
+  <h2>User Reviews</h2><br>
   <%@restaurant.reviews.sort_by(&:rating).each do |review|%>
   <strong><%=review.title%></strong><br>
   <%= review.experience%><br>
   <%= review.rating%>/5<br><br><br>
     <%end%>
-</ul>
+
 <br><br>
 <form action="/users/:id">
   <input type="submit" class="button" value="My Reviews">
