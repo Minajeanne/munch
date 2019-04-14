@@ -21,15 +21,16 @@ class RestaurantsController < ApplicationController
 
   post '/restaurants/new' do
     if logged_in?
-      @restaurant = Restaurant.new(name: params[:name], cuisine: params[:cuisine], location: params[:location])
-        if @restaurant.save
+      @restaurant = Restaurant.new(name: params[:name].strip, cuisine: params[:cuisine].strip, location: params[:location].strip)
+        if @restaurant
+          @restaurant.save
           redirect '/reviews/new'
         else
           redirect '/reviews/index'
+          # flash[:message] = "Restaurant already exists!"
         end
     else
     redirect '/login'
-    # how to limit multiple creations of the same restaurant?
     end
   end
 
@@ -44,7 +45,7 @@ class RestaurantsController < ApplicationController
   get '/restaurants/:id/edit' do
     redirect to '/login' unless logged_in?
     @restaurant = Restaurant.find(params[:id])
-  
+
     erb :'/restaurants/edit.html'
   end
 
