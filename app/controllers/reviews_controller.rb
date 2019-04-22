@@ -21,6 +21,8 @@ class ReviewsController < ApplicationController
   post '/reviews/new' do
     @review = Review.new(title: params[:title], experience: params[:experience], rating: params[:rating])
     @review.user_id = session[:user_id]
+    # current_user.reviews << @review
+    # current_user.reviews.build(params)
     @review.restaurant_id = params[:restaurant_id]
       if @review && @review.user_id == current_user.id
         @review.save
