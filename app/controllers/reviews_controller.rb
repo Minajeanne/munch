@@ -4,8 +4,7 @@ class ReviewsController < ApplicationController
     if logged_in?
       @restaurants = Restaurant.all
       @reviews = Review.all
-      @reviews = @reviews.sort_by(&:restaurant_id)
-       # binding.pry
+      @reviews = @reviews.sort_by(&:title) #change back to restaurant_id?
 
       erb :'/reviews/index.html'
     else
@@ -22,10 +21,12 @@ class ReviewsController < ApplicationController
   post '/reviews/new' do
     @review = Review.new(title: params[:title], experience: params[:experience], rating: params[:rating])
     @review.user_id = session[:user_id]
+    # current_user.reviews << @review
+    # current_user.reviews.build(params)
     @review.restaurant_id = params[:restaurant_id]
       if @review && @review.user_id == current_user.id
         @review.save
- # binding.pry
+
         flash[:message] = "You have succesfully created #{@review.title}!"
         redirect to "/reviews/#{@review.id}"
       else

@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/signup.html'
     else
-      user = current_user
-      redirect '/user/#{user.id}'
+      @user = current_user
+      redirect "/user/#{@user.id}"
     end
   end
 
@@ -16,10 +16,9 @@ class UsersController < ApplicationController
         redirect '/signup'
       else
         @user = User.new(full_name: params[:full_name], username: params[:username], email: params[:email], password: params[:password])
-        # binding.pry
         @user.save
-        session[:id] = @user.id
-        erb :'/users/show.html'
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.id}"
       end
     else
       redirect '/'
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
          if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
         @reviews = @user.reviews
-  # binding.pry
 
         erb :'/users/show.html'
       else
@@ -54,8 +52,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = current_user
-    if @user && @user.id #== params[:id].to_i
-    # if @user && @user.username == params[:username]
+    if @user && @user.id #( params[:id] == @user.id)
       @reviews = @user.reviews
       erb :'/users/show.html'
     else
